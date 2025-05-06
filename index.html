@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="やさしい光で背中を押すタロット占い『Mizuha Tarot』。心に寄り添うメッセージであなたの可能性を引き出します。" />
+  <meta name="keywords" content="タロット, オラクル, 占い, スピリチュアル, Mizuha, ひとこと占い, プチ鑑定, しっかり鑑定" />
+  <title>Mizuha Tarot | やさしい光を届けるタロット占い</title>
+
+  <style>
+    /* ========= 基本カラー ========= */
+    :root {
+      --accent: #a7e6e6;            /* 淡いティファニーブルー */
+      --accent-dark: #6dd0d0;
+      --bg-light: #f7ffff;
+      --text-main: #333;
+      --white: #ffffff;
+    }
+
+    /* ========= リセット ========= */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:80px;} /* ← header 分の余白 */
+    body{
+      font-family:"Yu Gothic","游ゴシック体",sans-serif;
+      line-height:1.7;color:var(--text-main);background:var(--white);font-size:16px;
+    }
+    h1,h2,h3,h4{font-family:"Yu Mincho","游明朝体",serif;font-weight:normal;color:var(--text-main)}
+    h1{font-size:40px;margin-bottom:20px}
+    h2{font-size:32px;margin-bottom:40px;text-align:center;position:relative;padding-bottom:15px}
+    h2::after{content:"";width:80px;height:3px;background:var(--accent);position:absolute;bottom:0;left:50%;transform:translateX(-50%)}
+    h3{font-size:24px;margin-bottom:15px}
+    p{margin-bottom:20px}
+    a{color:var(--accent-dark);text-decoration:none;transition:.3s}
+    a:hover{opacity:.7}
+    .container{width:90%;max-width:1100px;margin:0 auto;padding:80px 0}
+    .btn{
+      display:inline-block;padding:12px 30px;background:var(--accent);color:var(--white);
+      border-radius:40px;font-weight:bold;transition:.3s;text-align:center;
+      box-shadow:0 4px 8px rgba(0,0,0,.08);
+    }
+    .btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
+
+    /* ========= ヘッダー ========= */
+    header{
+      position:fixed;top:0;left:0;width:100%;z-index:1000;
+      background:rgba(255,255,255,.95);box-shadow:0 2px 10px rgba(0,0,0,.05);
+    }
+    .header-inner{display:flex;justify-content:space-between;align-items:center;width:90%;max-width:1100px;margin:0 auto;padding:15px 0}
+    .logo{font-size:24px;font-weight:bold;color:var(--accent-dark)}
+    nav ul{display:flex;list-style:none}
+    nav li{margin-left:30px}
+    nav a{font-weight:bold;color:var(--text-main)}
+    nav a:hover{color:var(--accent-dark)}
+    .hamburger{display:none;cursor:pointer}
+    .hamburger span{display:block;width:25px;height:3px;background:var(--text-main);margin:5px 0;transition:.3s}
+
+    /* ========= ヒーロー ========= */
+    .hero{
+      height:90vh;
+      background:
+        linear-gradient(to bottom,rgba(255,255,255,.8),rgba(9, 146, 146, 0.486)),
+        url('https://images.unsplash.com/photo-1502740289988-04eddde1556a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fCVFNiVCMCVCNHxlbnwwfHwwfHx8MA%3D%3D');
+      background-size:cover;background-position:center;
+      display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;
+    }
+    .hero h1{font-size:42px;text-shadow:0 2px 4px rgb(255, 255, 255)}
+    .hero p{font-size:18px;margin-bottom:40px}
+
+    /* ========= 3つの理由 ========= */
+    .reasons{background:var(--bg-light)}
+    .reason-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:40px}
+    .reason-card{
+      background:var(--white);border-radius:10px;padding:30px;text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,.05);transition:.3s;
+    }
+    .reason-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,.1)}
+    .reason-number{
+      width:60px;height:60px;border-radius:50%;background:var(--accent);color:var(--white);
+      display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 20px;
+    }
+
+    /* ========= プロフィール ========= */
+    .profile{background:var(--white)}
+    .profile-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center}
+    .profile-img{flex:1;text-align:center;min-width:260px}
+    .profile-img img{width:80%;max-width:260px;border-radius:50%;box-shadow:0 0 20px rgba(167,230,230,.4)}
+    .profile-text{flex:2;padding:20px;min-width:300px}
+
+    /* ========= メニュー ========= */
+    .menu-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .menu-card{
+      background:var(--bg-light);border-radius:10px;overflow:hidden;
+      box-shadow:0 5px 15px rgba(0,0,0,.05);transition:.3s;
+    }
+    .menu-card:hover{transform:translateY(-4px)}
+    .menu-header{background:var(--accent);color:var(--white);text-align:center;padding:20px}
+    .menu-body{padding:20px}
+    .menu-price{font-size:26px;font-weight:bold;color:var(--accent-dark);margin:10px 0 5px}
+    .menu-note{font-size:14px;color:#777;margin-bottom:15px}
+    .features{list-style:none;margin-bottom:20px}
+    .features li{padding:5px 0;border-bottom:1px dotted #ccc}
+    .features li:last-child{border-bottom:none}
+
+    /* ========= お客様の声 ========= */
+    .testimonials{background:var(--bg-light)}
+    .testimonial-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .testimonial{background:var(--white);border-radius:10px;padding:30px;box-shadow:0 5px 15px rgba(0,0,0,.05)}
+    .testimonial p{font-style:italic}
+    .author{margin-top:15px;font-weight:bold;color:var(--accent-dark);font-size:14px}
+
+    /* ========= フッター ========= */
+    footer{background:#faffff;color:#008079;text-align:center;padding:60px 0 30px}
+    .footer-logo{font-size:24px;color:var(--accent-dark);margin-bottom:15px}
+    .sns{margin:20px 0}
+    .sns a{display:inline-block;width:48px;height:48px;border-radius:50%;background:var(--accent);
+      color:var(--white);font-size:24px;line-height:48px;margin:0 8px;transition:.3s;}
+    .sns a:hover{background:var(--accent-dark)}
+
+    /* ========= レスポンシブ ========= */
+    @media(max-width:767px){
+      body{font-size:14px}
+      h1{font-size:30px}
+      h2{font-size:26px}
+      .hero h1{font-size:34px}
+
+      /* モバイルメニュー */
+      #nav-menu{            /* ← セレクタを id 指定に */
+        position:fixed;top:70px;left:0;width:100%;
+        flex-direction:column;background:var(--white);
+        box-shadow:0 5px 10px rgba(0,0,0,.1);
+        transform:translateY(-110%);opacity:0;pointer-events:none;transition:.3s;
+      }
+      #nav-menu.active{transform:translateY(0);opacity:1;pointer-events:auto;}
+      nav li{margin:0;padding:15px 0;border-bottom:1px solid #eee}
+
+      .hamburger{display:block}
+      .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+      .hamburger.active span:nth-child(2){opacity:0}
+      .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    }
+    /* ==== SNS アイコン（画像版） ==== */
+.sns a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  width: 54px;px;
+  height: 54px;px;
+  border-radius:50%;
+  background:#ffffff;
+  margin:0 8px;
+  transition:.3s;
+}
+
+.sns a:hover{ background:var(--accent-dark); }
+
+.sns img{
+  width: 40px;px;
+  height: 40px;px;
+  object-fit:contain;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ========= ヘッダー ========= -->
+  <header>
+    <div class="header-inner">
+      <a href="#home" class="logo">Mizuha Tarot</a>
+
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="#reasons">選ばれる理由</a></li>
+          <li><a href="#profile">プロフィール</a></li>
+          <li><a href="#menu">占いメニュー</a></li>
+          <li><a href="#testimonials">お客様の声</a></li>
+          <li><a href="https://lin.ee/xb7uPiT" target="_blank">公式LINE</a></li>
+        </ul>
+      </nav>
+
+      <!-- ハンバーガー -->
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========= ヒーロー ========= -->
+  <section class="hero" id="home">
+    <div class="container" style="text-align:center;">
+      <h1>やさしい光で背中を押すタロット占い</h1>
+      <p>迷いの中にいるあなたへ。カードが映し出すヒントで<br>本来の輝きを取り戻せますように。</p>
+      <a href="#menu" class="btn">メニューを見る</a>
+    </div>
+  </section>
+
+  <!-- ========= 選ばれる理由 ========= -->
+  <section class="reasons" id="reasons">
+    <div class="container">
+      <h2>Mizuha Tarotが選ばれる3つの理由</h2>
+
+      <div class="reason-cards">
+        <!-- ① -->
+        <div class="reason-card">
+          <div class="reason-number">①</div>
+          <h3>寄り添うメッセージ</h3>
+          <p>結果を一方的に伝えるのではなく、心にやさしく響く言葉でお届けします。単なる占いではなく、あなたの気持ちに寄り添い、共に解決策を見つけるパートナーとなります。</p>
+        </div>
+        <!-- ② -->
+        <div class="reason-card">
+          <div class="reason-number">②</div>
+          <h3>柔軟で的確な鑑定力</h3>
+          <p>ご相談内容に合わせて最適なカードスプレッドを選択し、的確にリーディング。豊富な経験と直感力で、あなたの現在地とこれから進みたい道を照らします。</p>
+        </div>
+        <!-- ③ -->
+        <div class="reason-card">
+          <div class="reason-number">③</div>
+          <h3>幅広い学びでサポート</h3>
+          <p>タロットやオラクルの研究に加え、心理学・コーチング・カウンセリングも学習。スピリチュアルと実践的アプローチを融合し、行動につながるアドバイスをお届けします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========= プロフィール ========= -->
+  <section class="profile" id="profile">
+    <div class="container">
+      <h2>占い師プロフィール</h2>
+
+      <div class="profile-inner">
+        <div class="profile-img">
+          <img src="images/Mizuha.jpg" alt="Mizuha プロフィール画像">
+        </div>
+
+        <div class="profile-text">
+          <h3>ミズハ（Mizuha）</h3>
+          <p>10年以上にわたり、多くの方の人生に寄り添ってきた経験を持つ占い師です。<br>
+            「やさしい光で背中を押す」がモットー。単なる占いではなく、クライアント様が本来持つ可能性を引き出すことを大切にし、運命は変えられるという信念のもと前向きな未来への道筋を示します。</p>
+          <a href="https://lin.ee/xb7uPiT" target="_blank" class="btn">公式LINEで相談する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========= 鑑定メニュー ========= -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <h2>鑑定メニュー</h2>
+
+      <p class="text-center" style="margin-bottom:40px;">
+        すべてテキストでのご提供です。+500円で音声メッセージを追加可能。<br>
+        お支払い方法：銀行振込 / クレジットカード
+      </p>
+
+      <div class="menu-cards">
+        <!-- ひとこと占い -->
+        <div class="menu-card">
+          <div class="menu-header"><h3>ひとこと占い</h3></div>
+          <div class="menu-body">
+            <div class="menu-price">¥1,000</div>
+            <div class="menu-note">+¥500で音声メッセージ</div>
+            <ul class="features">
+              <li>気軽に相談したい方向け</li>
+              <li>テキスト300〜500文字</li>
+            </ul>
+            <a href="https://buy.stripe.com/28o5oe7Q06NgeI09AG" target="_blank" class="btn">占いに申し込む</a>
+          </div>
+        </div>
+
+        <!-- すっきり占い -->
+        <div class="menu-card">
+          <div class="menu-header"><h3>すっきり占い</h3></div>
+          <div class="menu-body">
+            <div class="menu-price">¥2,980</div>
+            <div class="menu-note">+¥500で音声メッセージ</div>
+            <ul class="features">
+              <li>1つのテーマで占います</li>
+              <li>テキスト約1,000文字</li>
+            </ul>
+            <a href="https://buy.stripe.com/aEUdUKc6g0oSeI0aEJ" target="_blank" class="btn">占いに申し込む</a>
+          </div>
+        </div>
+
+        <!-- しっかり占い -->
+        <div class="menu-card">
+          <div class="menu-header"><h3>しっかり占い</h3></div>
+          <div class="menu-body">
+            <div class="menu-price">¥4,980</div>
+            <div class="menu-note">+¥500で音声メッセージ</div>
+            <ul class="features">
+              <li>最大3つのテーマで占います</li>
+              <li>テキスト約3,000文字</li>
+            </ul>
+            <a href="https://buy.stripe.com/dR67wm0ny5Jc6bu9AE" target="_blank" class="btn">占いに申し込む</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========= お客様の声 ========= -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <h2>お客様の声</h2>
+
+      <div class="testimonial-wrap">
+        <div class="testimonial">
+          <p>転職の相談でひとこと占いをお願いしました。短いメッセージなのに心にスッと入ってきて、翌日には行動に移せました！</p>
+          <div class="author">M.N 様（30代・女性）</div>
+        </div>
+        <div class="testimonial">
+          <p>すっきり占いで恋愛の悩みを相談。自分では気づいていなかった視点をもらえ、前向きな一歩を踏み出せました。</p>
+          <div class="author">R.K 様（20代・女性）</div>
+        </div>
+        <div class="testimonial">
+          <p>しっかり占いをリピート。毎回具体的なアドバイスがもらえるので、目標に向けてブレずに進めています。</p>
+          <div class="author">S.T 様（40代・男性）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========= フッター ========= -->
+  <footer>
+    <div class="footer-logo">Mizuha Tarot</div>
+    <p>やさしい光で背中を押すタロット占い</p>
+
+    <div class="sns">
+      <a href="https://www.instagram.com/mizuha_uranai" target="_blank"><img src="images/instagram.png" alt="instagram" /></a>
+    </div>
+
+    <small>&copy; 2025 Mizuha Tarot</small>
+  </footer>
+
+  <!-- ========= JS ========= -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu   = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
